@@ -1,20 +1,24 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:create, :new]
+
   def new
-    render template: "sessions/new"
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to "/"
+    session_params = params.permit(:email, :password)
+    @user = User.find_by(email: session_params[:email])
+    if @user && @user.authenticate(session_params[:password])
+      session[:user_id] = @user.id
+      redirect_to @user
     else
-      redirect_to "/login"
+      flash[:notice] = "Login is invalid!"
+      redirect_to new_session_path
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to "/login"
+    flash[:notice] = "You have been signed out!"
+    redirect_to new_session_path
   end
 end
