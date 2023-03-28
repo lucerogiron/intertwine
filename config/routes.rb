@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only [:new, :create]
   resource :calendar, only: [:show], controller: :calendar
 
   root to: "calendar#show"
