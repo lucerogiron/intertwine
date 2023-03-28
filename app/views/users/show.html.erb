@@ -1,9 +1,12 @@
 <p style="color: green"><%= notice %></p>
+<strong><div> User Successfully Signed in </div></strong>
 <%= render @user %>
+
+
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <%= link_to "View Calendar", calendar_path %>
+
 </div>
-<%= content_tag :h1, current_user.welcome %>
-<%= link_to "Sign out", session_path, method:"delete" %>
+
+<%= link_to "Sign out", new_session_path %>

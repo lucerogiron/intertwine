@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  before_action :set_user, only: %i[ show edit update destroy ]
+
+  def show
+  end
 
   def new
     @user = User.new
@@ -19,5 +23,11 @@ class UsersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
