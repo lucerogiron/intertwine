@@ -6,29 +6,110 @@
     <title>Bootstrap demo</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
   </head>
-  <body>
-    <% if flash[:notice] %>
-  <%= content_tag :h1, flash[:notice] %>
-<% else %>
-  <%= content_tag :h1, "Please Log in" %>
-<% end %>
-<%= form_with url: sessions_path do |f| %>
-  <%= f.text_field :email %><br>
-  <%= f.password_field :password %><br>
-  <%= link_to "Sign Up", new_user_path %>
-  <%= f.submit "Sign In!" %>
-<% end %>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
-  </body>
+  
+  
+  <% if flash[:notice] %>
+    <%= content_tag :h1, flash[:notice] %>
+    <% else %>
+    <%= content_tag :h1, "User Login" %>
+  <% end %>
+
+<div class="form-center">
+    <%= form_with url: sessions_path do |f| %>
+      <%= f.text_field :email, placeholder: "Email" %><br>
+      
+      <%= f.password_field :password,  placeholder: "Password" %><br>
+      
+      <%= f.submit "Sign In!" %>
+</div>
+
+<div class="signup">
+    <span>Don't have an Intertwine account?
+      <%= link_to "Sign Up", new_user_path, class: "link" %></span>
+      <% end %>
+    </div>
+ 
 </html>
 
 
 
 <style>
-  body {
-    background-color: darkseagreen;
-    
+
+  html {
+      background: url("https://1.bp.blogspot.com/-Qdy-KD4eH24/W78GvmeCVyI/AAAAAAAAEBU/1Ig8PwvgyA8f9m3dHppwiO952AQ0H_nmACLcBGAs/s1600/c_bg_0002.png") no-repeat scroll 0 0;
+
   }
+
+  .container {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 2px 12px 0px rgba(0,0,0,0.5); 
+    margin-top: 100px;
+    padding: 50px 60px 45px;
+    width: 300px;
+    backdrop-filter: blur(5px);
+  }
+
+  body {
+    background: none;
+  }
+
+  h1 {
+    text-align: center; 
+    margin-bottom: 30px;
+    font-family: palatino;
+    text-shadow: 1px 2px 2px rgba(40,40,40,0.36);
+    color: white;
+  }
+
+  .form-center {
+    display:flex;
+    justify-content: center;
+  }
+
+  input[type="text"] {
+    border: 0 solid #e0e0e0;
+    border-width: 1px;
+    border-radius: 0.25em;
+    margin-bottom: 15px;
+    width: 157px;
+    height: 25px;
+    font-family: palatino;
+  }
+
+  input[type="password"] {
+    border: 0 solid #e0e0e0;
+    border-width: 1px;
+    border-radius: 0.25em;
+    margin-bottom: 15px;
+    width: 157px;
+    height: 25px;
+    font-family: palatino;
+  }
+
+  input[type="submit"] {
+    color: white;
+    background-color: rgba(83,164,49,0.63);    width: 157px;
+    text: bold;
+    border: none;
+    height: 30px;
+    font-family: palatino;
+  }
+
+  a.link {
+    display: inline-block;
+    font-family: palatino;
+    color: orange;
+  }
+
+  .signup {
+    text-align: center;
+    margin-top: 27px;
+    font-family: palatino;
+    color: white;
+  }
+
+
+ 
+
 </style>
